@@ -1,2 +1,20 @@
-<!--pages/form/form.wxml-->
-<text>pages/form/form.wxml</text>
+<i-panel title="商品信息">
+  <i-input value="{{ proType }}" title="商品型号" autofocus placeholder="请输入商品型号" />
+  <i-input value="{{ proNum }}" title="机身编码" placeholder="请输入机身编码" />
+  <picker mode="date" value="{{proOutDate}}" bindchange="proOutDateDateChange">
+    <i-input value="{{ proOutDate }}" title="出厂时间" placeholder="请输入出厂时间" />
+  </picker>
+</i-panel>
+<i-panel title="购机用户信息">
+  <i-input value="{{ buyUserName }}" title="用户姓名"  placeholder="请输入用户姓名" />
+  <picker mode="date" value="{{buyDate}}" bindchange="buyDateDateChange">
+    <i-input value="{{ buyDate }}" title="购机日期" placeholder="请输入购机日期" />
+  </picker>
+</i-panel>
+<i-panel title="商家信息">
+  <i-input value="{{ companyName }}" title="商家名称"  placeholder="请输入商家名称" />
+</i-panel>
+<i-panel title="上传销售凭证">
+  <image style="margin-left:1rem; width: 100px; height: 100px;" mode="aspectFill" src="https://developers.weixin.qq.com/miniprogram/dev/image/cat/7.png?t=18122715"></image>
+</i-panel>
+<i-button bind:click="submitClick" type="primary" size="default">提交</i-button>

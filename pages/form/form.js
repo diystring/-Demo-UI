@@ -5,7 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    proType: '',
+    proNum: '',
+    proOutDate: '',
+    buyUserName: '',
+    buyDate:'',
+    companyName:''
   },
 
   /**
@@ -62,5 +67,35 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  //  点击日期组件确定事件  
+  buyDateDateChange: function (e) {
+    this.setData({
+      buyDate: e.detail.value
+    })
+  },
+  proOutDateDateChange: function (e) {
+    this.setData({
+      proOutDate: e.detail.value
+    })
+  },  
+  submitClick:function(e){
+    wx.request({
+      url: '/api/values/PostBill', // 仅为示例，并非真实的接口地址
+      data: {
+        'ProType': proType,
+        ProNum: proNum,
+        ProOutDate: proOutDate,
+        BuyUserName: buyUserName,
+        BuyDate: buyDate,
+        CompanyName: companyName
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        console.log(res.data)
+      }
+    })
   }
 })
