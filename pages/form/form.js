@@ -1,4 +1,7 @@
 // pages/form/form.js
+//获取应用实例
+const app = getApp()
+const { $Message } = require('../../dist/base/index');
 Page({
 
   /**
@@ -81,20 +84,32 @@ Page({
   },  
   submitClick:function(e){
     wx.request({
-      url: '/api/values/PostBill', // 仅为示例，并非真实的接口地址
+      url: app.globalData.apihost+'/api/values/PostBill', // 仅为示例，并非真实的接口地址
       data: {
-        'ProType': proType,
-        ProNum: proNum,
-        ProOutDate: proOutDate,
-        BuyUserName: buyUserName,
-        BuyDate: buyDate,
-        CompanyName: companyName
+        ProType: this.data.proType,
+        ProNum: this.data.proNum,
+        ProOutDate: this.data.proOutDate,
+        BuyUserName: this.data.buyUserName,
+        BuyDate: this.data.buyDate,
+        CompanyName: this.data.companyName
       },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success(res) {
         console.log(res.data)
+        if(res.data.Code===1)
+        {
+          $Message({
+            content: res.data.Msg,
+            type: 'success'
+          });
+        }else{
+          $Message({
+            content:res.data.Msg,
+            type: 'error'
+          });
+        }
       }
     })
   }

@@ -18,3 +18,4 @@
   <image style="margin-left:1rem; width: 100px; height: 100px;" mode="aspectFill" src="https://developers.weixin.qq.com/miniprogram/dev/image/cat/7.png?t=18122715"></image>
 </i-panel>
 <i-button bind:click="submitClick" type="primary" size="default">提交</i-button>
+<i-message id="message" />
