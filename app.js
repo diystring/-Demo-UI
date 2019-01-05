@@ -35,6 +35,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    apihost:"http://localhost:64906"
+    apihost:"http://whdingao.com"
   }
 })
